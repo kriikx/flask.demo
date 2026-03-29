@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <title>MyTodo</title>
+</head>
+
+<body style="background-color:#f8f9fa;">
+
+    <!--  NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-check2-square"></i> MyTodo
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- LEFT NAV -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active d-flex align-items-center gap-2" href="/">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="https://keep.google.com/"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-sticky-fill"></i> Quick Notes
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="/about">
+                            <i class="bi bi-info-circle-fill"></i> About
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- 🔍 SEARCH -->
+                <form class="d-flex" onsubmit="searchTodo(event)">
+                    <input class="form-control me-2" type="search" id="searchInput" placeholder="Search tasks...">
+                    <button class="btn btn-outline-success" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    <!--  ADD TASK CARD -->
+    <div class="container my-4">
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-body">
+
+                <h4 class="mb-3">
+                    <i class="bi bi-plus-circle-fill"></i> Add New Task
+                </h4>
+
+                <form action="/" method="POST">
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Todo Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Enter task title"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="desc" class="form-label">Todo Description</label>
+                        <textarea class="form-control" name="desc" id="desc" rows="3"
+                            placeholder="Describe your task"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-plus-lg"></i> Add Task
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--  TODO LIST -->
+    <div class="container my-4">
+
+        <h5 class="mb-3">
+            <i class="bi bi-list-task"></i> Todo List
+            <span class="badge bg-secondary">{{ allTodo|length }}</span>
+        </h5>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>SNo</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% if allTodo|length == 0 %}
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            <div class="alert alert-info">
+                                <i class="bi bi-emoji-smile"></i>
+                                No tasks yet. Start by adding one above!
+                            </div>
+                        </td>
+                    </tr>
+                    {% else %}
+
+                    {% for todo in allTodo %}
+                    <tr>
+                        <th>{{ todo.sno }}</th>
+                        <td>{{ todo.title }}</td>
+                        <td>{{ todo.desc }}</td>
+                        <td>{{ todo.date_created }}</td>
+
+                        <td>
+                            <a href="/update/{{ todo.sno }}" class="btn btn-sm btn-outline-success">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+
+                            <a href="/delete/{{ todo.sno }}" class="btn btn-sm btn-outline-danger"
+                                onclick="return confirm('Delete this task?')">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    {% endif %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--  SEARCH SCRIPT -->
+    <script>
+        function searchTodo(event) {
+            event.preventDefault();
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
