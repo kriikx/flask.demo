@@ -49,7 +49,7 @@ project/
 
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 
 ### 1️. Clone the repository
 
@@ -108,9 +108,9 @@ python app.py
 
 ---
 
-##  License
+##  
 
-This project is open-source and available under the MIT License.
+
 
 ---
 
