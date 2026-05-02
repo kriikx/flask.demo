@@ -114,6 +114,4 @@ python app.py
 
 ---
 
-## ⭐ Acknowledgements
-
-Built using Flask and Bootstrap to demonstrate full-stack web development fundamentals.
+## 
