@@ -102,7 +102,7 @@ python app.py
 
 ##  Author
 
-**Krish**
+**_Krish_**
 
 *  Instagram: https://instagram.com/kriikx
 
