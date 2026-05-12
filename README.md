@@ -8,12 +8,12 @@
 
 ##  Features
 
-*  Add new tasks with title and description
-*  Update existing tasks dynamically
-*  Delete completed or unnecessary tasks
-*  Dark mode support
-*  Toast notifications for user feedback
-*  Responsive UI built with Bootstrap
+*  Add new tasks with title and description.
+*  Update existing tasks dynamically.
+*  Delete completed or unnecessary tasks.
+*  Dark mode support.
+*  Toast notifications for user feedback.
+*  Responsive UI built with Bootstrap.
 
 ---
 
