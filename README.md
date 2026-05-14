@@ -2,7 +2,7 @@
 
 ##  Overview
 
-**MyTodo** is a lightweight and efficient task management web application built using **Flask** and **SQLite**. It enables users to create, update, and delete tasks with a clean and intuitive interface, helping streamline daily productivity.
+**MyTodo** is a lightweight and efficient task management web application built using **Flask** and **SQLite**. It enables users to create, update, and delete tasks with a clean and intuitive interface, helping streamline daily productivity .
 
 ---
 
