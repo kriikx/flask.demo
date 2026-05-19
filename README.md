@@ -25,7 +25,7 @@
 | Flask      | Web framework       |
 | SQLite     | Database            |
 | HTML/CSS   | Structure & styling |
-| Bootstrap  | UI components       |
+| Bootstrap  | UI component       |
 | JavaScript | Interactivity       |
 
 ---
